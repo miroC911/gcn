@@ -32,8 +32,6 @@ class Model(object):
         self.optimizer = None
         self.opt_op = None
 
-    def _build(self):
-        raise NotImplementedError
 
     def build(self):
         """ Wrapper for _build() """
@@ -59,12 +57,6 @@ class Model(object):
 
     def predict(self):
         pass
-
-    def _loss(self):
-        raise NotImplementedError
-
-    def _accuracy(self):
-        raise NotImplementedError
 
     def save(self, sess=None):
         if not sess:
@@ -130,6 +122,7 @@ class MLP(Model):
 
 
 class GCN(Model):
+    
     def __init__(self, placeholders, input_dim, **kwargs):
         super(GCN, self).__init__(**kwargs)
 
